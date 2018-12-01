@@ -94,11 +94,10 @@ bindsym $mod+a focus parent
 
 set $ws1 "1: School"
 set $ws2 "2: Projects"
-set $ws3 "3: Terminal"
-set $ws4 "4: Firefox"
-set $ws5 "5: Spotify"
-set $ws6 "6: Discord"
-set $ws7 "7: Steam"
+set $ws3 "3: Recreation"
+set $ws4 "4: Spotify"
+set $ws5 "5: Discord"
+set $ws6 "6: Steam"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -107,7 +106,7 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
+bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
@@ -119,7 +118,7 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
@@ -196,14 +195,12 @@ bar
 }
 
 # Execs
-for_window [class="Spotify"] move to workspace $ws5
-assign [class="discord"] $ws6
-assign [class="Steam"] $ws7
+for_window [class="Spotify"] move to workspace $ws4
+assign [class="discord"] $ws5
+assign [class="Steam"] $ws6
 
 exec_always compton --backend glx --paint-on-overlay --vsync opengl-swc --no-fading-openclose -f
 exec --no-startup-id xiccd 
-exec --no-startup-id i3-msg 'workspace $ws4; exec /usr/bin/firefox'
-exec --no-startup-id i3-msg 'workspace $ws3; exec /usr/bin/xfce4-terminal'
 exec discord
 exec steam
 exec spotify
