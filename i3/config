@@ -201,6 +201,3 @@ assign [class="Steam"] $ws6
 
 exec_always compton --backend glx --paint-on-overlay --vsync opengl-swc --no-fading-openclose -f
 exec --no-startup-id xiccd 
-exec discord
-exec steam
-exec spotify
