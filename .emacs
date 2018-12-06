@@ -10,8 +10,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (adwaita)))
- '(package-selected-packages (quote (helm))))
+ '(custom-enabled-themes nil)
+ '(package-selected-packages
+   (quote
+    (company-irony-c-headers company-irony use-package company helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,3 +50,42 @@ There are two things you can do about this warning:
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x m") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; Line Numbers
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+
+;; Indentation Style
+(setq c-default-style "bsd"
+      c-basic-offset 4
+      tab-width 4)
+
+;; Company C/C++ Auto Completion
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1))
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") 0)
+  (define-key company-active-map (kbd "M-p") 0)
+  (define-key company-active-map (kbd "<down>") #'company-select-next)
+  (define-key company-active-map (kbd "<up>") #'company-select-previous))
+
+(use-package company-irony
+  :ensure t
+  :config
+  (require 'company)
+  (add-to-list 'company-backends 'company-irony))
+
+(use-package irony
+  :ensure t
+  :config
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+(with-eval-after-load 'company
+  (add-hook 'c++-mode-hook 'company-mode)
+  (add-hook 'c-mode-hook 'company-mode))
