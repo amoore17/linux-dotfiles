@@ -66,8 +66,14 @@ plugins=(
   git
 )
 
+# Syntax Highlighting
 source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# UBUNTU
+# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ARCH LINUX
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
