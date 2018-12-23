@@ -107,6 +107,10 @@ There are two things you can do about this warning:
   "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
   :keybinding "g")
 
+(defengine youtube
+  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
+  :keybinding "y")
+
 ;; Org Mode Babel
     (org-babel-do-load-languages
      'org-babel-load-languages
