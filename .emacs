@@ -1,3 +1,9 @@
+;; REQUIRED PACKAGES
+;; helm
+;; irony
+;; company (also install clang)
+;; engine-mode
+;; use-package
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -13,7 +19,7 @@
  '(custom-enabled-themes (quote (adwaita)))
  '(package-selected-packages
    (quote
-    (company-irony-c-headers company-irony use-package company helm))))
+    (engine-mode company-irony-c-headers company-irony use-package company helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -90,3 +96,23 @@ There are two things you can do about this warning:
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
   (add-hook 'c-mode-hook 'company-mode))
+
+;; Engine Mode
+;; Engine Mode binding is "C-x / g" for Google
+(require 'engine-mode)
+(engine-mode t)
+(setq engine/browser-function 'browse-url-firefox)
+
+(defengine google
+  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+  :keybinding "g")
+
+;; Org Mode Babel
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '(
+       (C . t)
+       (java . t)
+       (emacs-lisp . t)
+       (python . t)
+       ))
