@@ -4,6 +4,7 @@
 ;; company (also install clang)
 ;; engine-mode
 ;; use-package
+;; rust-mode
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -17,9 +18,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (adwaita)))
+ '(delete-selection-mode nil)
  '(package-selected-packages
    (quote
-    (engine-mode company-irony-c-headers company-irony use-package company helm))))
+    (rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -120,3 +122,8 @@ There are two things you can do about this warning:
        (emacs-lisp . t)
        (python . t)
        ))
+
+;; Rust
+(add-to-list 'load-path "/path/to/rust-mode/")
+(autoload 'rust-mode "rust-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
