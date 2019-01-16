@@ -5,6 +5,7 @@
 ;; engine-mode
 ;; use-package
 ;; rust-mode
+;; toml
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -21,7 +22,7 @@
  '(delete-selection-mode nil)
  '(package-selected-packages
    (quote
-    (rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
+    (toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
