@@ -7,6 +7,8 @@
 ;; rust-mode
 ;; toml
 ;; flycheck
+;; company-irony-c-headers
+;; flycheck-rust
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -23,7 +25,7 @@
  '(delete-selection-mode nil)
  '(package-selected-packages
    (quote
-    (flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
+    (flycheck-rust flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -78,6 +80,12 @@ There are two things you can do about this warning:
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
+(require 'company-irony-c-headers)
+   ;; Load with `irony-mode` as a grouped backend
+   (eval-after-load 'company
+     '(add-to-list
+       'company-backends '(company-irony-c-headers company-irony)))
+
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "M-n") 0)
   (define-key company-active-map (kbd "M-p") 0)
@@ -99,6 +107,10 @@ There are two things you can do about this warning:
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(with-eval-after-load 'rust-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
