@@ -109,8 +109,6 @@ There are two things you can do about this warning:
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
