@@ -6,6 +6,7 @@
 ;; use-package
 ;; rust-mode
 ;; toml
+;; flycheck
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -22,7 +23,7 @@
  '(delete-selection-mode nil)
  '(package-selected-packages
    (quote
-    (toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
+    (flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -95,6 +96,9 @@ There are two things you can do about this warning:
   (add-hook 'c++-mode-hook 'irony-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
