@@ -9,6 +9,7 @@
 ;; flycheck
 ;; company-irony-c-headers
 ;; flycheck-rust
+;; markdown-mode
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -26,7 +27,7 @@
  '(global-hl-line-mode t)
  '(package-selected-packages
    (quote
-    (flycheck-rust flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
+    (markdown-mode flycheck-rust flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
 
 ;; MELPA
 (require 'package)
