@@ -1,5 +1,4 @@
 ;; REQUIRED PACKAGES
-;; helm
 ;; irony
 ;; company (also install clang)
 ;; engine-mode
