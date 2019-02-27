@@ -15,8 +15,8 @@ let g:syntastic_cpp_compiler_option = ' -std=c++17 -stdlib=libc++'
 
 set smartindent
 set number
-set tabstop=4
+set tabstop=8
 set softtabstop=-1
-set shiftwidth=4
-set expandtab
+set shiftwidth=8
+set softtabstop=0
 set colorcolumn=81
