@@ -27,7 +27,7 @@
  '(global-hl-line-mode t)
  '(package-selected-packages
    (quote
-    (markdown-mode flycheck-rust flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company helm))))
+    (markdown-mode flycheck-rust flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company))))
 
 ;; MELPA
 (require 'package)
@@ -48,16 +48,6 @@ There are two things you can do about this warning:
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
-
-;; Helm
-(require 'helm-mode)
-(require 'helm-config)
-
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x m") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; Line Numbers
 (global-linum-mode t)
