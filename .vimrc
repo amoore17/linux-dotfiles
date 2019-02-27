@@ -12,11 +12,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_option = ' -std=c++17 -stdlib=libc++'
+let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_compiler_options = ' -std=c11'
 
 set smartindent
 set number
-set tabstop=8
+set tabstop=4
 set softtabstop=-1
-set shiftwidth=8
-set softtabstop=0
+set shiftwidth=4
+set expandtab
 set colorcolumn=81
