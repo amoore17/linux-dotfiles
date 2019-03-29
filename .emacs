@@ -92,12 +92,12 @@ There are two things you can do about this warning:
   (require 'company)
   (add-to-list 'company-backends 'company-irony))
 
-(use-package irony
-  :ensure t
-  :config
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+(eval-after-load "irony"
+  '(progn
+     (custom-set-variables '(irony-additional-clang-options '("-std=c++17")))
+     (add-to-list 'company-backends 'company-irony)
+     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'c-mode-common-hook 'irony-mode)))
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
