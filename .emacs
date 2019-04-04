@@ -53,10 +53,13 @@ There are two things you can do about this warning:
 (setq linum-format "%4d \u2502 ")
 
 ;; Indentation Style
-(setq-default indent-tabs-mode nil)
-(setq c-default-style "bsd"
-      c-basic-offset 4
-      tab-width 4)
+;;(setq-default indent-tabs-mode nil)
+;;(setq c-default-style "bsd"
+;;      c-basic-offset 4
+;;      tab-width 4)
+(setq-default tab-width 8)
+(setq c-default-style "linux"
+      c-basic-offset 8)
 
 ;; Highlight Current Line
 (global-hl-line-mode 1)
