@@ -61,6 +61,9 @@ There are two things you can do about this warning:
 (setq c-default-style "linux"
       c-basic-offset 8)
 
+;; JavaScript Indentation Style
+(setq js-indent-level 2)
+
 ;; Highlight Current Line
 (global-hl-line-mode 1)
 (set-face-background 'highlight "color-252")
