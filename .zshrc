@@ -70,10 +70,10 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # UBUNTU
-# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ARCH LINUX
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
@@ -116,5 +116,9 @@ alias em='emacs -nw'
 alias clg='clang'
 alias clg++='clang++'
 alias ytdl='youtube-dl'
+alias gcl='/bin/gcl'
+alias mpv='mpv --icc-profile-auto'
 
 ls -l
+
+export MANWIDTH=80

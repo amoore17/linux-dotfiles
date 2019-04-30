@@ -39,6 +39,11 @@ alias em='emacs -nw'
 alias clg='clang'
 alias clg++='clang++'
 alias ytdl='youtube-dl'
-alias zyp='zypper'
+alias ls='ls --color=always'
+alias gcl='/bin/gcl'
+alias mpv='mpv --icc-profile-auto'
 
 ls -l
+
+export MANWIDTH=80
+export PS1='$(whoami)@$(hostname):$(pwd)$ '
