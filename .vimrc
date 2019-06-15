@@ -17,7 +17,8 @@
 
 set smartindent
 set number
-set tabstop=8
-set shiftwidth=8
-set noexpandtab
 set colorcolumn=80
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
