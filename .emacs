@@ -1,14 +1,11 @@
 ;; REQUIRED PACKAGES
 ;; irony
-;; company (also install clang)
-;; engine-mode
+;; company (also install clang and libclang-dev)
 ;; use-package
 ;; rust-mode
-;; toml
 ;; flycheck
 ;; company-irony-c-headers
 ;; flycheck-rust
-;; markdown-mode
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -16,53 +13,31 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (adwaita)))
- '(delete-selection-mode nil)
- '(global-hl-line-mode t)
+ '(irony-additional-clang-options (quote ("-std=c++17")))
  '(package-selected-packages
    (quote
-    (markdown-mode flycheck-rust flycheck toml-mode rust-mode engine-mode company-irony-c-headers company-irony use-package company))))
-
-;; MELPA
-(require 'package)
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (proto (if no-ssl "http" "https")))
-  (when no-ssl
-    (warn "\
-Your version of Emacs does not support SSL connections,
-which is unsafe because it allows man-in-the-middle attacks.
-There are two things you can do about this warning:
-1. Install an Emacs version that does support SSL and be safe.
-2. Remove this warning from your init file so you won't see it again."))
-  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
-  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-  (when (< emacs-major-version 24)
-    ;; For important compatibility libraries like cl-lib
-    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
-(package-initialize)
+    (company-irony flycheck-rust company-irony-c-headers flycheck rust-mode use-package company irony))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 ;; Line Numbers
 (global-linum-mode t)
 (setq linum-format "%4d \u2502 ")
 
-;; Indentation Style
-;;(setq-default indent-tabs-mode nil)
-;;(setq c-default-style "bsd"
-;;      c-basic-offset 4
-;;      tab-width 4)
-(setq-default tab-width 8)
-(setq c-default-style "linux"
-      c-basic-offset 8)
-
-;; JavaScript Indentation Style
-(setq js-indent-level 2)
+;; Column
+(setq column-number-mode t)
 
 ;; Highlight Current Line
 (global-hl-line-mode 1)
@@ -70,8 +45,14 @@ There are two things you can do about this warning:
 (set-face-foreground 'highlight nil)
 (set-face-underline-p 'highlight t)
 
-;; Column
-(setq column-number-mode t)
+;; C/C++ Indentation Style
+(setq-default indent-tabs-mode nil)
+(setq c-default-style "bsd"
+      c-basic-offset 4
+      tab-width 4)
+
+;; JavaScript Indentation Style
+(setq js-indent-level 2)
 
 ;; Company C/C++ Auto Completion
 (use-package company
@@ -113,42 +94,3 @@ There are two things you can do about this warning:
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
   (add-hook 'c-mode-hook 'company-mode))
-
-;; Engine Mode
-;; Engine Mode binding is "C-x / g" for Google
-(require 'engine-mode)
-(engine-mode t)
-(setq engine/browser-function 'browse-url-firefox)
-
-(defengine google
-  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-  :keybinding "g")
-
-(defengine duckduckgo
-  "https://duckduckgo.com/?q=%s"
-  :keybinding "d")
-
-(defengine youtube
-  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
-  :keybinding "y")
-
-;; Org Mode Babel
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '(
-       (C . t)
-       (java . t)
-       (emacs-lisp . t)
-       (python . t)
-       ))
-
-;; Rust
-(add-to-list 'load-path "/path/to/rust-mode/")
-(autoload 'rust-mode "rust-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
