@@ -32,6 +32,10 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; Line Numbers
+(global-linum-mode t)
+(setq linum-format "%4d \u2502 ")
+
 ;; Column
 (setq column-number-mode t)
 
