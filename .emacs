@@ -6,6 +6,7 @@
 ;; flycheck
 ;; company-irony-c-headers
 ;; flycheck-rust
+;; engine-mode
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -24,7 +25,7 @@
  '(irony-additional-clang-options (quote ("-std=c++17")))
  '(package-selected-packages
    (quote
-    (company-irony flycheck-rust company-irony-c-headers flycheck rust-mode use-package company irony))))
+    (engine-mode company-irony flycheck-rust company-irony-c-headers flycheck rust-mode use-package company irony))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,3 +95,24 @@
 (with-eval-after-load 'company
   (add-hook 'c++-mode-hook 'company-mode)
   (add-hook 'c-mode-hook 'company-mode))
+
+;; Engine Mode
+;; Engine Mode binding is "C-x / g" for Google
+(require 'engine-mode)
+(engine-mode t)
+(setq engine/browser-function 'browse-url-firefox)
+
+(defengine google
+  "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+  :keybinding "g")
+
+(defengine duckduckgo
+  "https://duckduckgo.com/?q=%s"
+  :keybinding "d")
+
+(defengine youtube
+  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
+  :keybinding "y")
+
+;; Set man width
+(setenv "MANWIDTH" "80")
