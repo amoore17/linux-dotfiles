@@ -1,4 +1,5 @@
 set smartindent
+set number
 set colorcolumn=121
 set tabstop=4
 set shiftwidth=4
