@@ -28,8 +28,8 @@
 ;; Spaces > tabs
 (setq-default indent-tabs-mode nil)
 
-;; C/C++ Indentation Style
-(setq-default indent-tabs-mode nil)
-(setq c-default-style "k&r"
+;; Indentation Style
+(setq c-default-style "bsd"
       c-basic-offset 4
-      tab-width 4)
+      tab-width 4
+      indent-tabs-mode nil)
