@@ -10,7 +10,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (adwaita))))
+ '(custom-enabled-themes '(adwaita))
+ '(package-selected-packages '(fill-column-indicator auctex)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -33,3 +34,19 @@
       c-basic-offset 4
       tab-width 4
       indent-tabs-mode nil)
+
+;; Delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Disable bell
+(setq ring-bell-function 'ignore)
+
+;; auto-fill-mode Break when line becomes too wide
+(setq-default fill-column 120)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; Fill Column Indicator (fill-column-indicator from MELPA)
+(require 'fill-column-indicator)
+(add-hook 'after-change-major-mode-hook 'fci-mode)
+(setq fci-rule-width 1)
+(setq fci-rule-color "red")
